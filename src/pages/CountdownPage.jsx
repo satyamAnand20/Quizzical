@@ -7,7 +7,7 @@ function CountdownPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Get quizId from navigation state, default to 1 if not provided
+  
   const selectedQuizId = location.state?.quizId || 1;
 
   useEffect(() => {

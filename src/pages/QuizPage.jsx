@@ -294,7 +294,7 @@ const QuizPage = () => {
       )}
 
       {/* Question */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         <QuestionCard
           keyProp={currentQuestion}
           questionNumber={currentQuestion + 1}
@@ -308,7 +308,37 @@ const QuizPage = () => {
           handleNext={handleNext}
           timer={timer}
         />
+      </AnimatePresence> */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentQuestion}
+          initial={{ x: "100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: "-100%", opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+          className="will-change-transform"
+          style={{
+            transform: "translate3d(0, 0, 0)",
+            backfaceVisibility: "hidden",
+            perspective: 1000,
+          }}
+        >
+          <QuestionCard
+            keyProp={currentQuestion}
+            questionNumber={currentQuestion + 1}
+            totalQuestions={questions.length}
+            questionData={questions[currentQuestion]}
+            quizImage={quiz.image}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+            getButtonClass={getButtonClass}
+            showNext={showNext}
+            handleNext={handleNext}
+            timer={timer}
+          />
+        </motion.div>
       </AnimatePresence>
+
       {showNext && (
         <div className="fixed bottom-4 inset-x-0 flex justify-center z-40">
           <button

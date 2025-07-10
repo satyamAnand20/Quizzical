@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 function Hero() {
   return (
     <>
-      <div className="bg-[#501578] pt-8 pb-10 min-h-[35vh] sm:min-h-[45vh] lg:min-h-[50vh]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-
+      <div className="bg-[#501578] pt-6 pb-6 sm:pt-8 sm:pb-10 min-h-[20vh] sm:min-h-[35vh] lg:min-h-[50vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-[#501578] bg-opacity-10">
             <motion.h1
               animate={{ y: [0, -10, 0] }}
@@ -85,7 +84,6 @@ function Hero() {
           />
         </svg>
       </div>
-      
     </>
   );
 }

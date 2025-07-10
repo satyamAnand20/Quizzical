@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 
 const dummyUsers = Array.from({ length: 25 }, (_, i) => ({
   name: `Player ${i + 1}`,
@@ -7,6 +7,17 @@ const dummyUsers = Array.from({ length: 25 }, (_, i) => ({
 })).sort((a, b) => b.coins - a.coins);
 
 const LeaderboardPage = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://run.confettipage.com/here.js";
+    script.setAttribute(
+      "data-confetticode",
+      "U2FsdGVkX1/sYKFg/dwe6HiXywN3UZzDDE8fvGScCU+roAvMvBkjX6fVJW6uP1SyaG9YWk2wKvSALm24XSFwWgsSZYsDhHeBiqTd5ERhoPMgSVE/Seqe767RouJpmNmw5E+EEtnXmvIj0UlCGHPI8NPKGK2DHSsApxWMqzzFCJovlpo1q9vz/muJSgLxA/+92DllJfxppmLQm7S5IIyLhtJZIqv0gMgpwUHke1RVHG/uV/PxUpr3YCB8ZRD8neO7WUeklqzzZj/v6lJwTrJZ6iB1RNMWG5atfoqzjsOBNeqfHHp9sgr7yoev4TwxxGqezNnt2LqONbHrZG8mhFT0JuSCGt2o3WhDAOoKbQJFid/QW3Pjn6r/WwdyuhVrSBpG5S/TzbnqLHwnh99wnNOFX33SmdYsadSKi7LCvcO677LEiNcH7ahZtbO9zUr9D4zCRzECKhLOucstuC+GnKpcVT04aCT4gWrRUQnOn+W1GgYiz5UpOY8V5wF4Yr8WvXmTPf1x6RJdz/h36Ck6kjTyKr51xyw12aex9z3kWtj4zV1/vDADbzMzTE/qYCtrE0YSGFF9suvSTMSrv/L8XOYsrFDRheIjGPeTLNDO4AR3YZvrfUp6kUAZlHckSu0eOeJUrrCDhBstn9Kqq9TpOOVVqzOXWmO9NGZX+rw1giUwEVFouSx+X8db6Lix6wmKq68GILcMGe9FMFIy15vot3uMq2ApmkpfMyBn+/MPa05SfVJthOY+di6KbJo1ARZIaGsp6zW4sSyA4GO/c+x/tvih3Qz0A7vQJj5RpX8evfOl60Y="
+    );
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, []);
+
   const topThree = dummyUsers.slice(0, 3);
   const rest = dummyUsers.slice(3);
 
@@ -18,7 +29,9 @@ const LeaderboardPage = () => {
 
   return (
     <div className="min-h-screen bg-[#102935] text-white py-6 px-4 sm:px-8">
-      <h1 className="text-5xl font-bold text-center mb-15 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">Leaderboard</h1>
+      <h1 className="text-5xl font-bold text-center mb-15 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">
+        Leaderboard
+      </h1>
 
       {/* Podium */}
       <div className="flex justify-center items-end gap-8 mb-20">
@@ -30,11 +43,7 @@ const LeaderboardPage = () => {
       {/* List from rank 4 onward */}
       <div className="flex flex-col items-center space-y-4 max-w-3xl mx-auto w-full">
         {rest.slice(0, visibleCount).map((user, index) => (
-          <LeaderboardRow
-            key={index}
-            rank={index + 4}
-            user={user}
-          />
+          <LeaderboardRow key={index} rank={index + 4} user={user} />
         ))}
 
         {visibleCount < rest.length && (
@@ -61,15 +70,23 @@ const PodiumItem = ({ user, rank, podiumHeight }) => {
     <div className="flex flex-col items-center justify-end">
       <div className="relative mb-3">
         <div className="absolute -top-10 w-full text-center">
-          <span className={`px-4 py-1 rounded-full text-sm font-bold ${rankLabels[rank].bg}`}>
+          <span
+            className={`px-4 py-1 rounded-full text-sm font-bold ${rankLabels[rank].bg}`}
+          >
             {rankLabels[rank].label} {rankLabels[rank].emoji}
           </span>
         </div>
         <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white">
-          <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+          <img
+            src={user.avatar}
+            alt={user.name}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
-      <div className={`w-32 ${podiumHeight} bg-[#1e3b4c] rounded-t-md flex flex-col items-center justify-center`}>
+      <div
+        className={`w-32 ${podiumHeight} bg-[#1e3b4c] rounded-t-md flex flex-col items-center justify-center`}
+      >
         <div className="font-semibold text-lg mt-2">{user.name}</div>
         <div className="text-sm text-yellow-300">{user.coins} 🪙</div>
       </div>

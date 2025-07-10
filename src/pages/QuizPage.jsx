@@ -176,6 +176,7 @@ const QuizPage = () => {
           quizName: quiz.title,
           quiz, // ✅ added
           userAnswers, // ✅ added
+          fromQuiz: true,
         },
       });
     }

@@ -23,12 +23,11 @@ const ResultPage = () => {
   const avgTimePerQ = Math.round(timeSpent / totalQuestions);
 
   useEffect(() => {
-    // Dynamically load the confetti script
     const script = document.createElement("script");
     script.src = "https://run.confettipage.com/here.js";
     script.setAttribute(
       "data-confetticode",
-      "U2FsdGVkX19k2wyrFWl10wjUgkNlZiw9JP2wTj4vcJdq+EPZP1kqRK5UegUDrSY3NIF/FQaTZl/BsfWCfYvezg0qV30sYaRupM/hIAicp/wW4baxleoyEoGosM+qj/kcWygzLC6pRAc/aM/WDMKGfsC1dYYSVUDllhaPw8BksJBDYLirKD18iVBFFRp9inb8/ly/P1B/Y9momYWmBWhAYQfxyttSW8BL7kuANgK+BingKFENiHPZ3uLuSe/fz6QaQcBLELn/JZ31XZZdcwdVnRmpE5JzmdOPRoLW9zoA9pZ3S56EhOKjylvCkFuFAgFCXilUOEPZbLqb3XrlL+aSBcgxjOmSMvVWJud7YUWnyGoWKb0e6remCZfxRg7wk65v5pTm3z9P6WEj1Qs3EKHdQfvwJkgFLUBNOJcF0hzMy2sRgIaSJaFvmW8MpbgvhqDfzxprFsQqtO/LdzPdSC+IrLnOoVxsyI5zVhKH5ptyh1ykFMPjfGkc/IEmAl//VvPp5moEdHfrixTKN0H6Gl4TyTDlWA8xSYTaOqiEeyQpO/WvcsO5WlUxXkGAymIHhhXry76HPZc7OrlIhB1uyr0H2S6jLFSw1K5HXleugPhOkONf0s+Jqcx/XlVn19P6gz+ph1KwxskDQl/zmBvJGXSW31WYxYbyciAJhjVEIScDatRJkOYVFvxxF3r2776GDNVS8gBkogqEp5964Y5HqBqpPAglQ2EgXdvIiF+2gUx433JKuvaNCg/I7OiCYlAaIAcz2M7ohTv2WvYrygV758tkkSY4sDp11Ad01HbRvDauEW4="
+      "U2FsdGVkX1/XTyqt2F6b+lrCaoF4pge1lRHJipBFgu6epPWI147wkqg0JEcjrjTxvXh2BMASSlD+j18pGT88aV0Z76+jhXBhrSVn3pXIUJg1kXg+upzuEZ+4vtFyVKn/9puIgeowdX8I733tm8BrJxRj6PAJw8c3fEsSSFHGbEgIEcgT/ihfcu71pU1em7fYyHg4//batFjHcgd6432IY/niAiaU6Gsfq4UDmYl34M3Ud3RUDoobHH7joe1aeFNNCGz9Fe8VrDrLjAmRtzWNB9a0H5WSStFWzbgXp/oYNnfjv0EC05g1lQtttF9k/VEXswfb8QdVbHyq3mOBeem0ai9IlEOvmrVwXkRvCndWgYsw3XSta1q7qESaZACtDZD8qr6H7vE1saHgE8MYGynFXldhV7we6IVsY3xY7jpyicrmlIIoisivYG4J6zPJfzy44uFwbSb1hKygx7N59EcY/53PThfoP+bmayEmBBGo5guU+B3OJJXZM7OtsDX8wLVwRY9ctN8JvakYe2rq6EwjUJYbkFxQeWhYnEMIX1Je4myqXWpO/MvlRKPC2Q1S3dqsirFaJQhLo59wu908ecDhTpAuNj4exrpVKiXGHsqiU6iDGyZDxYrB6Ix39mA9RgZiHPX0clOdeyE3ljKB5MSh0EgCCjL5pWH4Jfnzgn/VWqFtdVolMELEYd2Q+93H8nQ/u3gnssAnIaJ+MHkV3gAG3ykNRx3M2/uU22ChglpXLPjaukapZVOSosoP5i50tELSmQTw5EtNNs4YoyTyRciRJve9dQXAQgTrc8BZSApxNiM="
     );
     script.async = true;
 
@@ -40,7 +39,6 @@ const ResultPage = () => {
 
     document.body.appendChild(script);
 
-    // Optional cleanup
     return () => {
       document.body.removeChild(script);
     };

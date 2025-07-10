@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 function Navbar() {
   return (
-    <nav className="w-full bg-purple-800 shadow-md py-4 px-4 sm:px-8 md:px-12">
+    <nav className="w-full bg-[#501578] shadow-md py-4 px-4 sm:px-8 md:px-12">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <Link

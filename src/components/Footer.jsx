@@ -4,7 +4,7 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 const Footer = () => {
   return (
-    <footer className="bg-purple-800 text-white pt-10 pb-6">
+    <footer className="bg-[#501578] text-white pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Language selector */}

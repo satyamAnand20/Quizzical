@@ -17,11 +17,11 @@ function QuizDetail() {
     <div className="bg-[#1a0826] min-h-screen text-white px-4 py-5 flex flex-col items-center">
       <div className="max-w-xl w-full flex flex-col items-center">
         {/* Consistent image container */}
-        <div className="w-[90%] max-w-md h-64 sm:h-72 md:h-80 overflow-hidden rounded-xl mb-6">
+        <div className="group w-[90%] max-w-md h-64 sm:h-72 md:h-80 overflow-hidden rounded-xl mb-6">
           <img
             src={quiz.image}
             alt={quiz.title}
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-top transform transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 

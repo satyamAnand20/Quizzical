@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 function Hero() {
   return (
     <>
-      <div className="bg-purple-800 pt-8 pb-10 min-h-[35vh] sm:min-h-[45vh] lg:min-h-[50vh]">
+      <div className="bg-[#501578] pt-8 pb-10 min-h-[35vh] sm:min-h-[45vh] lg:min-h-[50vh]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 
-          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-purple-800 bg-opacity-10">
+          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-[#501578] bg-opacity-10">
             <motion.h1
               animate={{ y: [0, -10, 0] }}
               transition={{
@@ -39,7 +39,7 @@ function Hero() {
           </div>
 
           {/* Box 2 */}
-          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-purple-800 bg-opacity-10">
+          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-[#501578] bg-opacity-10">
             <motion.h1
               animate={{ y: [0, -10, 0] }}
               transition={{
@@ -79,7 +79,7 @@ function Hero() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill="#6E11B0"
+            fill="#501578"
             fillOpacity="1"
             d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,106,720,104C840,101,960,75,1080,58.7C1200,43,1320,37,1380,34.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
           />

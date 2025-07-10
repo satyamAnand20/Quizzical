@@ -128,7 +128,7 @@ export const quizzes = [
   },
   {
     id: 7,
-    title: "Guess Country by National Sport",
+    title: "Guess National Sport",
     plays: 6,
     image: quiz7,
   },

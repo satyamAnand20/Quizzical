@@ -9,7 +9,7 @@ const Footer = () => {
 
         
         <div className="mb-6">
-          <button className="flex items-center gap-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition">
+          <button className="flex items-center gap-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition">
             <GlobeAltIcon className="w-5 h-5" />
             English
           </button>
@@ -20,7 +20,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-center md:text-left">
-            Quizard © 2025. All rights reserved.
+            Quizzical © 2025. All rights reserved.
           </p>
 
           {/* Links */}
@@ -35,16 +35,16 @@ const Footer = () => {
           {/* Social icons */}
           <div className="flex gap-4">
             <a href="#" className="hover:text-gray-300 transition">
-              <FaFacebookF size={18} />
+              <FaFacebookF size={19} />
             </a>
             <a href="#" className="hover:text-gray-300 transition">
-              <FaInstagram size={18} />
+              <FaInstagram size={20} />
             </a>
             <a href="#" className="hover:text-gray-300 transition">
-              <FaLinkedinIn size={18} />
+              <FaLinkedinIn size={19} />
             </a>
             <a href="#" className="hover:text-gray-300 transition">
-              <FaXTwitter size={18} />
+              <FaXTwitter size={19} />
             </a>
           </div>
         </div>

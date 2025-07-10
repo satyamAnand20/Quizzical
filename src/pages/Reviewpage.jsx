@@ -16,73 +16,79 @@ const ReviewPage = () => {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 text-yellow-400 hover:underline"
+          className="mb-4 text-yellow-400 hover:underline"
         >
           ← Back to Results
         </button>
-        <h1 className="text-3xl font-bold text-yellow-400 mb-15">
-          Review Question
-        </h1>
+        <div className="flex flex-col space-y-20">
+          <h1 className="text-3xl font-bold text-yellow-400">
+            Review Question
+          </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-18">
-          {quiz.questions.map((question, index) => {
-            const userAnswer = userAnswers.find(
-              (ua) => ua.questionIndex === index
-            );
-            const selectedOption = userAnswer?.selectedOptionIndex ?? null;
-            const correctOption = question.correctOptionIndex;
-            const timeTaken = userAnswer?.timeTaken ?? 0;
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-20">
+            {quiz.questions.map((question, index) => {
+              const userAnswer = userAnswers.find(
+                (ua) => ua.questionIndex === index
+              );
+              const selectedOption = userAnswer?.selectedOptionIndex ?? null;
+              const correctOption = question.correctOptionIndex;
+              const timeTaken = userAnswer?.timeTaken ?? 0;
 
-            const getButtonClass = (idx) => {
-              if (idx === correctOption) {
-                return "bg-green-100 border-2 border-green-500 text-green-900";
-              }
-              if (idx === selectedOption && idx !== correctOption) {
-                return "bg-red-100 border-2 border-red-500 text-red-900 line-through";
-              }
-              return "bg-slate-100 text-black";
-            };
+              const getButtonClass = (idx) => {
+                if (idx === correctOption) {
+                  return "bg-green-100 border-2 border-green-500 text-green-900";
+                }
+                if (idx === selectedOption && idx !== correctOption) {
+                  return "bg-red-100 border-2 border-red-500 text-red-900 line-through";
+                }
+                return "bg-slate-100 text-black";
+              };
 
-            return (
-              <div key={question.id} className="relative">
-                <div className="absolute -top-10 right-0 flex gap-2 text-sm">
-                  <span
-                    className={`px-2 py-1 rounded font-semibold ${
-                      selectedOption === correctOption
-                        ? "bg-green-600"
-                        : "bg-red-600"
-                    }`}
-                  >
-                    {selectedOption === correctOption
-                      ? "✔️ Correct"
-                      : "❌ Incorrect"}
-                  </span>
-                  <span className="bg-slate-700 px-2 py-1 rounded">
-                    ⏱ {timeTaken}s
-                  </span>
-                  <span className="bg-yellow-600 px-2 py-1 rounded">
-                    🪙 {selectedOption === correctOption ? "4" : "0"}
-                  </span>
+              return (
+                <div key={question.id} className="relative">
+                  <div className="absolute -top-11 right-0 w-full md:w-auto flex flex-wrap justify-end gap-2 md:gap-3 text-base font-bold">
+                    <span
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded text-white ${
+                        selectedOption === correctOption
+                          ? "bg-green-600"
+                          : "bg-red-600"
+                      }`}
+                    >
+                      <span className="text-lg">
+                        {selectedOption === correctOption ? "✔️" : "❌"}
+                      </span>
+                      {selectedOption === correctOption
+                        ? "Correct"
+                        : "Incorrect"}
+                    </span>
+                    <span className="flex items-center gap-1 bg-slate-700 px-3 py-1.5 rounded text-white">
+                      <span className="text-lg">⏱</span> {timeTaken}s
+                    </span>
+                    <span className="flex items-center gap-1 bg-yellow-600 px-3 py-1.5 rounded text-white">
+                      <span className="text-lg">🪙</span>{" "}
+                      {selectedOption === correctOption ? "4" : "0"}
+                    </span>
+                  </div>
+
+                  <QuestionCard
+                    keyProp={index}
+                    questionNumber={index + 1}
+                    totalQuestions={quiz.questions.length}
+                    questionData={question}
+                    quizImage={quiz.image}
+                    selectedOption={selectedOption}
+                    handleOptionClick={() => {}}
+                    getButtonClass={getButtonClass}
+                    showNext={false}
+                    handleNext={() => {}}
+                    timer={1}
+                    reviewMode={true}
+                    correctOption={correctOption}
+                  />
                 </div>
-
-                <QuestionCard
-                  keyProp={index}
-                  questionNumber={index + 1}
-                  totalQuestions={quiz.questions.length}
-                  questionData={question}
-                  quizImage={quiz.image}
-                  selectedOption={selectedOption}
-                  handleOptionClick={() => {}}
-                  getButtonClass={getButtonClass}
-                  showNext={false}
-                  handleNext={() => {}}
-                  timer={1}
-                  reviewMode={true}
-                  correctOption={correctOption}
-                />
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

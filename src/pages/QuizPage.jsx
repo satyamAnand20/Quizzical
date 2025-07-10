@@ -40,6 +40,8 @@ const QuizPage = () => {
 
   useEffect(() => {
     if (timer === 0 && selectedOption === null) {
+      const isLastQuestion = currentQuestion === questions.length - 1;
+
       setUnattemptedCount((prev) => prev + 1);
       setUserAnswers((prev) => [
         ...prev,
@@ -51,23 +53,42 @@ const QuizPage = () => {
         },
       ]);
 
-      setShowTimeoutOverlay(true);
-      let countdown = 3;
-      setCountdownToNext(countdown);
-
-      const interval = setInterval(() => {
-        countdown -= 1;
+      if (isLastQuestion) {
+        // Directly submit quiz without countdown
+        navigate("/result", {
+          state: {
+            correct: correctCount,
+            incorrect: incorrectCount,
+            unattempted: unattemptedCount + 1,
+            totalQuestions: questions.length,
+            timeSpent: totalTimeSpent + 60,
+            coins: coinCount,
+            rank: Math.floor(Math.random() * 500) + 1,
+            quizName: quiz.title,
+            quiz,
+            userAnswers,
+          },
+        });
+      } else {
+        // Show timeout overlay with 3-second countdown
+        setShowTimeoutOverlay(true);
+        let countdown = 3;
         setCountdownToNext(countdown);
-        if (countdown === 0) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setShowTimeoutOverlay(false);
-            handleNext();
-          }, 1000);
-        }
-      }, 1000);
 
-      return () => clearInterval(interval);
+        const interval = setInterval(() => {
+          countdown -= 1;
+          setCountdownToNext(countdown);
+          if (countdown === 0) {
+            clearInterval(interval);
+            setTimeout(() => {
+              setShowTimeoutOverlay(false);
+              handleNext();
+            }, 1000);
+          }
+        }, 1000);
+
+        return () => clearInterval(interval);
+      }
     }
 
     if (selectedOption !== null) {
@@ -288,6 +309,18 @@ const QuizPage = () => {
           timer={timer}
         />
       </AnimatePresence>
+      {showNext && (
+        <div className="fixed bottom-4 inset-x-0 flex justify-center z-40">
+          <button
+            onClick={handleNext}
+            className="w-full px-6 py-4 mt-6 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
+          >
+            {currentQuestion + 1 === questions.length
+              ? "Submit Quiz"
+              : "Next Question"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -22,6 +22,30 @@ const ResultPage = () => {
   const accuracy = Math.round((correct / totalQuestions) * 100);
   const avgTimePerQ = Math.round(timeSpent / totalQuestions);
 
+  useEffect(() => {
+    // Dynamically load the confetti script
+    const script = document.createElement("script");
+    script.src = "https://run.confettipage.com/here.js";
+    script.setAttribute(
+      "data-confetticode",
+      "U2FsdGVkX19k2wyrFWl10wjUgkNlZiw9JP2wTj4vcJdq+EPZP1kqRK5UegUDrSY3NIF/FQaTZl/BsfWCfYvezg0qV30sYaRupM/hIAicp/wW4baxleoyEoGosM+qj/kcWygzLC6pRAc/aM/WDMKGfsC1dYYSVUDllhaPw8BksJBDYLirKD18iVBFFRp9inb8/ly/P1B/Y9momYWmBWhAYQfxyttSW8BL7kuANgK+BingKFENiHPZ3uLuSe/fz6QaQcBLELn/JZ31XZZdcwdVnRmpE5JzmdOPRoLW9zoA9pZ3S56EhOKjylvCkFuFAgFCXilUOEPZbLqb3XrlL+aSBcgxjOmSMvVWJud7YUWnyGoWKb0e6remCZfxRg7wk65v5pTm3z9P6WEj1Qs3EKHdQfvwJkgFLUBNOJcF0hzMy2sRgIaSJaFvmW8MpbgvhqDfzxprFsQqtO/LdzPdSC+IrLnOoVxsyI5zVhKH5ptyh1ykFMPjfGkc/IEmAl//VvPp5moEdHfrixTKN0H6Gl4TyTDlWA8xSYTaOqiEeyQpO/WvcsO5WlUxXkGAymIHhhXry76HPZc7OrlIhB1uyr0H2S6jLFSw1K5HXleugPhOkONf0s+Jqcx/XlVn19P6gz+ph1KwxskDQl/zmBvJGXSW31WYxYbyciAJhjVEIScDatRJkOYVFvxxF3r2776GDNVS8gBkogqEp5964Y5HqBqpPAglQ2EgXdvIiF+2gUx433JKuvaNCg/I7OiCYlAaIAcz2M7ohTv2WvYrygV758tkkSY4sDp11Ad01HbRvDauEW4="
+    );
+    script.async = true;
+
+    script.onload = () => {
+      if (window.runConfetti) {
+        window.runConfetti();
+      }
+    };
+
+    document.body.appendChild(script);
+
+    // Optional cleanup
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const handleReviewClick = () => {
     if (!quiz || !userAnswers) {
       alert("Cannot load review. Missing quiz data.");

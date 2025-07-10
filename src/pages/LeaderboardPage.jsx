@@ -11,6 +11,20 @@ const LeaderboardPage = () => {
   const topThree = dummyUsers.slice(0, 3);
   const rest = dummyUsers.slice(3);
   const [visibleCount, setVisibleCount] = useState(2);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://run.confettipage.com/here.js";
+    script.setAttribute(
+      "data-confetticode",
+      "U2FsdGVkX18sAr9xDI/Xe5VS2aCE8xty1pD7FE7Dp83GOscVlt/wMDlMVQ3DONN5dDpdhKJO7Ji1AfUu5G3jhhMwPtufUZeQN8zovhokerHejt42ZOho2M/GE0abg6XlWstCwUskckr/0Wl5wWhfZKjwUmxaJISxmqov9Lu1D4WMtEcNpfuNA5VSXYviliA9WYcszwJ+Murw5RtmTKsvMVJuuzKh/h/BOe91ecVzsGwy45nQBuFv/pEvqIjks+K9Vi0TGE8oURpyyHHPRu6+B+etgKQu1ZgN9Jke8qO2HdqZcXK1WP9TzK1SmNYaFYYZ0GbEWoIGk5EUBjY4pIFGKm/FA7vcRl7DQF7QuCitvsZu5KrvO8CjOWm7Elzu+obFg9IE/VOQQ897TWyZC/h6ek9QNqKhztylykuUWyZK6lSscFpV76/08DwvR5jN/Zxb0fAoyzaHxnxgQufcXaTIMorM6Epo8KurGgw4Zu4+qPjNhaef9sPqOpToSRFg+7lxvoyA405bE5ASu6n1/a3ODVd7uBXCTtNmI3gPj+AtmjnTtR8DONBdzS9trLgvE8ZojV+/UJIoXxAGxU7pHrFNbpF39NfWj19hdSZAFfn8pHdoTKebxWdAFLtLxrPZPCr2N6u3tCYT2LzUFvcHVwcxZOPc6hV/MgZxxZygrJ2x1jieZBs6ryKin8vCzU6DRQ+BcJnny28aqqhDU+7R5CT5DvLnSF7GYm41/FWVZMcFzU+5Qw5C0Thlm+f88BC7W5BN2oa2uTSVcFI8HQgnS65Gf5hZX4rxAjS5K2hH/wCHE1o="
+    );
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script); 
+    };
+  }, []);
 
   const loadMore = () => {
     setVisibleCount((prev) => Math.min(prev + 3, rest.length));

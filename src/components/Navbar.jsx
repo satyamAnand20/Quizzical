@@ -6,8 +6,11 @@ function Navbar() {
     <nav className="w-full bg-purple-800 shadow-md py-4 px-4 sm:px-8 md:px-12">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-4xl font-bold tracking-wide text-yellow-400">
-          Quizard
+        <Link
+          to="/"
+          className="text-4xl font-bold tracking-wide text-yellow-400"
+        >
+          QUIZZICAL
         </Link>
 
         {/* Navigation Links + Burger */}

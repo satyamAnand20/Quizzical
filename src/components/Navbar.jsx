@@ -13,9 +13,7 @@ function Navbar() {
           QUIZZICAL
         </Link>
 
-        {/* Navigation Links + Burger */}
         <div className="flex items-center gap-6 text-white text-lg font-bold">
-          {/* These links are hidden on screens <= 725px (md:hidden) */}
           <div className="hidden md:flex gap-12 items-center">
             <span className="cursor-pointer hover:underline">Home</span>
             <span className="cursor-pointer hover:underline">Discover</span>
@@ -25,8 +23,7 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Burger Menu only on small screens (≤ 725px) */}
-          <GiHamburgerMenu className="md:hidden text-3xl cursor-pointer" />
+          <GiHamburgerMenu className="md:hidden text-4xl cursor-pointer" />
         </div>
       </div>
     </nav>

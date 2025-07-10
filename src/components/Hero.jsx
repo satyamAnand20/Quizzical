@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import FloatingShapes from "./FloatingShapes";
 
 function Hero() {
   return (
     <>
-      <div className="bg-[#501578] pt-6 pb-6 sm:pt-8 sm:pb-10 min-h-[20vh] sm:min-h-[35vh] lg:min-h-[50vh]">
+      <div className="relative bg-[#501578] pt-6 pb-6 sm:pt-8 sm:pb-10 min-h-[20vh] sm:min-h-[35vh] lg:min-h-[50vh] overflow-hidden">
+        <FloatingShapes />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left shadow-md rounded-md p-6 bg-[#501578] bg-opacity-10">
             <motion.h1
@@ -74,7 +77,7 @@ function Hero() {
       <div className="-mt-1">
         <svg
           className="block w-full"
-          viewBox="0 0 1440 160" 
+          viewBox="0 0 1440 160"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

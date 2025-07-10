@@ -74,7 +74,7 @@ function Hero() {
       <div className="-mt-1">
         <svg
           className="block w-full"
-          viewBox="0 0 1440 160" // reduced from 320 to 160
+          viewBox="0 0 1440 160" 
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

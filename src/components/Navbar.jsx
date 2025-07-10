@@ -8,7 +8,7 @@ function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="text-4xl font-bold tracking-wide text-yellow-400"
+          className="text-4xl font-bold tracking-wide bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 bg-clip-text text-transparent"
         >
           QUIZZICAL
         </Link>

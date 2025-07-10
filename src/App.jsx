@@ -7,6 +7,9 @@ import QuizDetail from "./pages/QuizDetail";
 import CountdownPage from "./pages/CountdownPage";
 import QuizPage from "./pages/QuizPage";
 import ResultPage from "./pages/ResultPage";
+import ReviewPage from "./pages/Reviewpage";
+
+
 import LeaderboardPage from "./pages/LeaderboardPage";
 
 function App() {
@@ -31,6 +34,7 @@ function App() {
           <Route path="/play/:id" element={<QuizPage />} />
           <Route path="/result" element={<ResultPage />} />
           <Route path="/leaderboardPage" element={<LeaderboardPage />} />
+          <Route path="/review" element={<ReviewPage />} />
           <Route
             path="*"
             element={

@@ -8,29 +8,6 @@ const dummyUsers = Array.from({ length: 25 }, (_, i) => ({
 })).sort((a, b) => b.coins - a.coins);
 
 const LeaderboardPage = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://run.confettipage.com/here.js";
-    script.setAttribute(
-      "data-confetticode",
-      "U2FsdGVkX191BxQHV41k02PZtu2G/ZT1GSWdN+popc+FG1D4EK3plBF3zWr/dRSqgO5mDLOToh1Cxu8zd4XPmM1buUxqVuq1fSkU3k/LE+aH+4h/xfM8HaRjM5ZUmiDFft2B2GpHcqE1y82scODvcpwNr2l9LP67uS41sKvLQUDyVIVgxeqLW01d1La0VLvIEi5hDSKuMDTeAdlMsaqP+hCQYF7Hd2yPFpxNZ4IEHYmr5GJ6PXVQmagj6BJPpzj/+Qrwe4F2cuqlkTEFLeG+UVzkuxkZOtnionTAStGpKGqGcmyobfjP03A4Y2LAmJPZrhiqUbuUNfX+P8GAWzpBALeGgqKWajsLU6UWEhLsT/PVMziLjoacUALdqY/xvlaL3cCKmsicIkrsSKT3ZRLg44iCWLe4x8n7AszSCiAOHY5jQ1pMUCKdUfRBbNOBg6vw2BT+bl175gFeHY0G1PQ5but1yfaeYY5ykiciUln/lGHDnzn7LUFGkXkhgndUbwc84AhvxIpD8Ye7iEQHvMAA0wVn4AyYibmnkMcsPBrCkVGkmUnS/kVzz2L92uJdg8HmDjhB2TyilxkYD1f7ecHLIQk3kEeINQKTkb8X79SN7vHdrMvbrk3L9DDsDCPAXQkpzCBrFQk46s5c2wwmLUDof48b9ls7KkiZPB1HUTxCOU75GYbHd2+JQ4MygsTMYnrwAr1MBLN4xq3ISKcqGD6IWwSwGR+/Pbw4/BYD120xNqaibOdJcCJpz/zAFZKTPx48X3npehyvaHOcVCs+lfxrk9UYIDd22nqWoMzcKxYZxzQ="
-    );
-
-    script.onload = () => {
-      if (window.confettiPage) {
-        window.confettiPage();
-      } else {
-        console.warn("ConfettiPage not available.");
-      }
-    };
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   const topThree = dummyUsers.slice(0, 3);
   const rest = dummyUsers.slice(3);
   const [visibleCount, setVisibleCount] = useState(2);

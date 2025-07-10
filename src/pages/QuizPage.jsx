@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { quizzes } from "../data/quizzes";
 import { AnimatePresence, motion } from "framer-motion";
+import QuestionCard from "../components/QuestionCard";
 
 const QuizPage = () => {
   const { id } = useParams();
@@ -25,6 +26,7 @@ const QuizPage = () => {
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [unattemptedCount, setUnattemptedCount] = useState(0);
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]); // ✅ new state
 
   if (!quiz || questions.length === 0) {
     return (
@@ -39,6 +41,16 @@ const QuizPage = () => {
   useEffect(() => {
     if (timer === 0 && selectedOption === null) {
       setUnattemptedCount((prev) => prev + 1);
+      setUserAnswers((prev) => [
+        ...prev,
+        {
+          questionIndex: currentQuestion,
+          selectedOptionIndex: null,
+          isCorrect: false,
+          timeTaken: 60,
+        },
+      ]);
+
       setShowTimeoutOverlay(true);
       let countdown = 3;
       setCountdownToNext(countdown);
@@ -73,6 +85,17 @@ const QuizPage = () => {
     setSelectedOption(index);
     const correct = index === questions[currentQuestion].correctOptionIndex;
     setIsCorrect(correct);
+
+    // ✅ Record user answer
+    setUserAnswers((prev) => [
+      ...prev,
+      {
+        questionIndex: currentQuestion,
+        selectedOptionIndex: index,
+        isCorrect: correct,
+        timeTaken: 60 - timer,
+      },
+    ]);
 
     if (correct) {
       setCorrectCount((prev) => prev + 1);
@@ -109,7 +132,6 @@ const QuizPage = () => {
   const handleNext = () => {
     setTotalTimeSpent((prev) => prev + (60 - timer));
 
-    // Track whether this question was answered
     if (selectedOption === null) {
       setUnattemptedCount((prev) => prev + 1);
     }
@@ -125,12 +147,14 @@ const QuizPage = () => {
         state: {
           correct: correctCount,
           incorrect: incorrectCount,
-          unattempted: unattemptedCount + (selectedOption === null ? 1 : 0), // Include final question unattempted if needed
+          unattempted: unattemptedCount + (selectedOption === null ? 1 : 0),
           totalQuestions: questions.length,
           timeSpent: totalTimeSpent + (60 - timer),
           coins: coinCount,
           rank: Math.floor(Math.random() * 500) + 1,
           quizName: quiz.title,
+          quiz, // ✅ added
+          userAnswers, // ✅ added
         },
       });
     }
@@ -250,90 +274,19 @@ const QuizPage = () => {
 
       {/* Question */}
       <AnimatePresence mode="wait">
-        <motion.div
-          key={currentQuestion}
-          initial={{ x: 300, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -300, opacity: 0 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="bg-slate-800 p-4 rounded-lg max-w-2xl mx-auto relative"
-        >
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <span className="font-bold">
-                Question {currentQuestion + 1} of {questions.length}
-              </span>
-              <span className="ml-2 bg-slate-700 px-2 py-1 rounded text-sm">
-                Single Select Question
-              </span>
-            </div>
-            <div className="relative w-12 h-12">
-              <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="20"
-                  stroke="#ccc"
-                  strokeWidth="4"
-                  fill="none"
-                />
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="20"
-                  stroke="#FF6C86"
-                  strokeWidth="4"
-                  strokeDasharray="125.6"
-                  strokeDashoffset={(1 - timer / 60) * 125.6}
-                  fill="none"
-                  style={{ transition: "stroke-dashoffset 1s linear" }}
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-sm font-bold">
-                {timer}
-              </div>
-            </div>
-          </div>
-
-          <div className="w-[75%] h-52 overflow-hidden rounded-xl mx-auto mb-4 sm:h-56 md:h-60 sm:max-w-sm max-[849px]:w-[90%] max-[849px]:h-72">
-            <img
-              src={quiz.image}
-              alt="quiz"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-
-          <p className="text-lg font-medium mb-4">
-            {questions[currentQuestion].question}
-          </p>
-
-          <div className="space-y-4">
-            {questions[currentQuestion].options.map((opt, idx) => (
-              <div key={idx} className="relative">
-                <button
-                  onClick={(e) => handleOptionClick(idx, e)}
-                  className={`w-full px-6 py-4 rounded-lg text-left flex items-center gap-4 transition-all duration-300 ${getButtonClass(
-                    idx
-                  )}`}
-                >
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-black font-bold">
-                    {String.fromCharCode(65 + idx)}
-                  </span>
-                  {opt}
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {showNext && (
-            <button
-              onClick={handleNext}
-              className="w-full px-6 py-4 mt-6 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
-            >
-              Next Question
-            </button>
-          )}
-        </motion.div>
+        <QuestionCard
+          keyProp={currentQuestion}
+          questionNumber={currentQuestion + 1}
+          totalQuestions={questions.length}
+          questionData={questions[currentQuestion]}
+          quizImage={quiz.image}
+          selectedOption={selectedOption}
+          handleOptionClick={handleOptionClick}
+          getButtonClass={getButtonClass}
+          showNext={showNext}
+          handleNext={handleNext}
+          timer={timer}
+        />
       </AnimatePresence>
     </div>
   );

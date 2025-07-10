@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-
 import { useNavigate, useLocation } from "react-router-dom";
 
 const ResultPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { quizName = "Your Quiz Results", ...rest } = location.state || {};
-
   const {
+    quizName = "Your Quiz Results",
+    quiz,
+    userAnswers,
     correct = 0,
     incorrect = 0,
     unattempted = 0,
-    timeSpent = 0, // seconds
+    timeSpent = 0,
     rank = 0,
-    totalQuestions = 1, // avoid division by 0
+    totalQuestions = 1,
     coins = 0,
   } = location.state || {};
 
@@ -22,28 +22,22 @@ const ResultPage = () => {
   const accuracy = Math.round((correct / totalQuestions) * 100);
   const avgTimePerQ = Math.round(timeSpent / totalQuestions);
 
-  useEffect(() => {
-  const script = document.createElement("script");
-  script.src = "https://run.confettipage.com/here.js";
-  script.setAttribute(
-    "data-confetticode",
-    "U2FsdGVkX19nFvHOMTuOp5IX3PTwlc4OOiie+L5mpghQDmNfQkJDEn78u2XQ0F1EQojhrPyogXb8VjNat3c4X/WjY19rxmjiKNlS372fxSfMT5ujRaJCEMwbYV4oZoX4L6A3HfypTPGtvE6E2MvGoDwkoKLrDHUf7rA+A335tlIq72edjx2XccmYSIkXXYsIZidktgOZqKTsgG4IHsDib7ZCvp9kP2Yy6QbIep5myIQqynXg+JAIjMlBNWVo1fm5ppxHSShh27Ex8fcHOpXTKvW+5YEQz+EOARMzHj2HAAbQemMMKSYiERmbhbjYA0fLwOBy+QnwmKMn3EjNFYWYwGtJikQicdQ7+12sX6dSEXjsP9mBvxJjgaIPZ/y6fdxy1u6qyh6svqlv7lPuHOh0iaG6neY2GaQ5JOi1kPFRpRUbXAHQGSbdkKNFUUXvELtbmyXjcZgZo2zjfeKV9hVVWGS+U9WAMWqEu6Zkg8nhi4kwGqWcyr8qUTZUZ1FRHfLc/lD31L8iqdvOY7iPMnnLCspSXykr1yEXkHIs64H4HO09GxHgIWWEFak8aCw833rfXOij1Inby1zrg9Iof6Mb9PYcFr9gFhj7Pe4e+2yEmDlbwqF2hYV1T2s/XhfU9xAmtDm3B6rNvgFL/qIInxex3vkn4VON42JLD8qtNeZO4aCF9n1Jxbqv8Oa1aBMhcgTJaKnF9citPRTBxNHlCVm4/CyX7Yt/s19WGt4zbDhNO+6tDYICw186NCh7lmVOT+RyG+RHvZoLMr7sVAJ1s52tPGsUpgMfYWodcPYLkP8YNzI="
-  );
-  script.async = true;
-  document.body.appendChild(script);
+  const handleReviewClick = () => {
+    if (!quiz || !userAnswers) {
+      alert("Cannot load review. Missing quiz data.");
+      return;
+    }
 
-  return () => {
-    document.body.removeChild(script);
+    navigate("/review", {
+      state: { quiz, userAnswers },
+    });
   };
-}, []);
-
 
   return (
     <div className="min-h-screen bg-[#102935] text-white flex flex-col items-center py-8 px-4 sm:px-0">
       {/* Quiz Heading */}
       <h1 className="text-3xl font-bold mb-6 text-center">{quizName}</h1>
 
-      {/* Shared container for stats and buttons */}
       <div className="w-full max-w-4xl flex flex-col items-center space-y-8">
         {/* Stats Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 bg-[#1e3b4c] p-6 rounded-xl shadow-lg w-full">
@@ -71,7 +65,7 @@ const ResultPage = () => {
               Share Score
             </button>
             <button
-              onClick={() => navigate("/review")}
+              onClick={handleReviewClick}
               className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800"
             >
               Review Questions

@@ -9,7 +9,7 @@ const Footer = () => {
 
         
         <div className="mb-6">
-          <button className="flex items-center gap-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition">
+          <button className="flex items-center gap-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition">
             <GlobeAltIcon className="w-5 h-5" />
             English
           </button>

@@ -316,7 +316,7 @@ const QuizPage = () => {
           initial={{ x: "100%", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: "-100%", opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
           className="will-change-transform"
           style={{
             transform: "translate3d(0, 0, 0)",
@@ -341,7 +341,7 @@ const QuizPage = () => {
       </AnimatePresence>
 
       {showNext && (
-        <div className="fixed bottom-4 inset-x-0 flex justify-center z-40">
+        <div className="fixed bottom-2 inset-x-0 flex justify-center z-40">
           <button
             onClick={handleNext}
             className="w-full px-6 py-4 mt-6 rounded-lg bg-blue-600 hover:bg-blue-700 transition"

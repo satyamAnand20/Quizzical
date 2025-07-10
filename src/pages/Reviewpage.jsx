@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "../components/QuestionCard";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const ReviewPage = () => {
   const location = useLocation();
@@ -16,9 +17,9 @@ const ReviewPage = () => {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="mb-4 text-yellow-400 hover:underline"
+          className="mb-4 text-yellow-400 hover:underline flex gap-1"
         >
-          ← Back to Results
+          <IoMdArrowRoundBack className="size-6" />Back to Results
         </button>
         <div className="flex flex-col space-y-20">
           <h1 className="text-3xl font-bold text-yellow-400">
@@ -36,10 +37,10 @@ const ReviewPage = () => {
 
               const getButtonClass = (idx) => {
                 if (idx === correctOption) {
-                  return "bg-green-100 border-2 border-green-500 text-green-900";
+                  return "bg-green-300 border-2 border-green-700 text-green-900";
                 }
                 if (idx === selectedOption && idx !== correctOption) {
-                  return "bg-red-100 border-2 border-red-500 text-red-900 line-through";
+                  return "bg-red-300 border-2 border-red-700 text-red-900 line-through";
                 }
                 return "bg-slate-100 text-black";
               };

@@ -43,8 +43,8 @@ function Home() {
       <div className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 max-w-screen-2xl mx-auto py-10">
         {/* Featured Quizzes */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Featured Quizzes</h2>
           <QuizCarousel
+            title="Featured Quizzes"
             items={quizzes.map((quiz) => (
               <QuizCard key={`featured-${quiz.id}`} {...quiz} />
             ))}
@@ -53,8 +53,8 @@ function Home() {
 
         {/* More Quizzes */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">More Quizzes</h2>
           <QuizCarousel
+            title="More Quizzes"
             items={quizzes.map((quiz) => (
               <QuizCard key={`more-${quiz.id}`} {...quiz} />
             ))}

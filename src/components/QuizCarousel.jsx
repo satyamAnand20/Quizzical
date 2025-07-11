@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
-const QuizCarousel = ({ items }) => {
+const QuizCarousel = ({ title, items }) => {
   const containerRef = useRef(null);
   const [scrollLeftMax, setScrollLeftMax] = useState(0);
 
@@ -29,29 +30,33 @@ const QuizCarousel = ({ items }) => {
 
   return (
     <div className="relative">
-      {/* Arrow Buttons */}
-      <button
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-200 transition"
-        onClick={() => scrollBy(-300)}
-        aria-label="Scroll Left"
-      >
-        <FaArrowAltCircleLeft size={28} />
-      </button>
+      {/*Header with heading and scroll buttons */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">{title}</h2>
+        <div className="flex gap-2">
+          <button
+            className="bg-white shadow rounded-full p-1 hover:bg-gray-200 transition"
+            onClick={() => scrollBy(-300)}
+            aria-label="Scroll Left"
+          >
+            <MdKeyboardArrowLeft size={28} />
+          </button>
+          <button
+            className="bg-white shadow rounded-full p-1 hover:bg-gray-200 transition"
+            onClick={() => scrollBy(300)}
+            aria-label="Scroll Right"
+          >
+            <MdKeyboardArrowRight size={28} />
+          </button>
+        </div>
+      </div>
 
-      <button
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-200 transition"
-        onClick={() => scrollBy(300)}
-        aria-label="Scroll Right"
-      >
-        <FaArrowAltCircleRight size={28} />
-      </button>
-
-      {/* Scrollable container (touch-drag enabled) */}
+      {/* Scrollable container */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth px-2"
+        className="flex gap-4 overflow-x-auto scroll-smooth px-2 pb-2"
         style={{
-          WebkitOverflowScrolling: "touch", // iOS momentum scroll
+          WebkitOverflowScrolling: "touch",
         }}
       >
         {items.map((item, index) => (

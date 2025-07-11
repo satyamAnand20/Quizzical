@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import NormalShapes from "../components/NormalShapes";
 
 function CountdownPage() {
-  const [phase, setPhase] = useState("ready"); // "ready", "countdown", "go"
+  const [phase, setPhase] = useState("ready");
   const [count, setCount] = useState(3);
   const navigate = useNavigate();
   const location = useLocation();
 
-  
   const selectedQuizId = location.state?.quizId || 1;
 
   useEffect(() => {
@@ -27,7 +27,8 @@ function CountdownPage() {
   }, [navigate, selectedQuizId]);
 
   return (
-    <div className="min-h-screen bg-[#133239] flex items-center justify-center text-white text-center px-4">
+    <div className="relative min-h-screen bg-[#133239] flex items-center justify-center text-white text-center px-4">
+      <NormalShapes />
       <style>
         {`
           @keyframes zoomFadeIn {

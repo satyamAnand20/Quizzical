@@ -1,5 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import NormalShapes from "../components/NormalShapes";
+import { BsArrowRightCircle } from "react-icons/bs";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { GoArrowRight } from "react-icons/go";
 
 const ResultPage = () => {
   const navigate = useNavigate();
@@ -56,13 +60,14 @@ const ResultPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#102935] text-white flex flex-col items-center py-8 px-4 sm:px-0">
+    <div className="relative min-h-screen bg-[#102935] text-white flex flex-col items-center py-8 px-4 sm:px-0">
+      <NormalShapes />
       {/* Quiz Heading */}
       <h1 className="text-3xl font-bold mb-6 text-center">{quizName}</h1>
 
-      <div className="w-full max-w-4xl flex flex-col items-center space-y-8">
+      <div className="w-full max-w-4xl flex flex-col items-center space-y-8 z-10">
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 bg-[#1e3b4c] p-6 rounded-xl shadow-lg w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 bg-[#1e3b4c] p-4 rounded-xl shadow-lg w-full z-10">
           <Stat label="Coin Earned" value={coinEarned} icon="🪙" />
           <Stat label="Your Score" value={score} icon="🏆" />
           <Stat label="Correct" value={correct} icon="✅" />
@@ -81,23 +86,27 @@ const ResultPage = () => {
         </div>
 
         {/* Buttons */}
-        <div className="w-full space-y-4">
+        <div className="w-full space-y-4 z-10">
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800">
-              Share Score
+            <button className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left">
+              <span>Share Score</span>
+              <IoShareSocialOutline  className="text-2xl" />
             </button>
             <button
               onClick={handleReviewClick}
-              className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800"
+              className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left"
             >
-              Review Questions
+              <span>Review Questions</span>
+              <GoArrowRight className="text-2xl" />
             </button>
           </div>
+
           <button
             onClick={() => navigate("/leaderboardPage")}
-            className="w-full bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800"
+            className="w-full bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left"
           >
-            Leaderboard
+            <span>Leaderboard</span>
+            <BsArrowRightCircle className="text-2xl" />
           </button>
         </div>
       </div>
@@ -107,13 +116,13 @@ const ResultPage = () => {
 
 const Stat = ({ label, value, icon, fullWidth = false }) => (
   <div
-    className={`flex items-center bg-[#123040] p-4 rounded-xl w-full ${
+    className={`flex items-center bg-[#123040] p-4 max-[389px]:p-2 rounded-xl w-full ${
       fullWidth ? "col-span-2" : ""
     }`}
   >
-    <div className="text-2xl mr-4">{icon}</div>
+    <div className="text-2xl mr-4 max-[378px]:mr-1.5">{icon}</div>
     <div>
-      <div className="text-sm text-gray-300">{label}</div>
+      <div className="text-sm font-semibold text-gray-300">{label}</div>
       <div className="text-lg font-bold">{value}</div>
     </div>
   </div>

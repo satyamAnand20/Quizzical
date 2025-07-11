@@ -1,8 +1,8 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { quizzes } from "../data/quizzes";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import NormalShapes from "../components/NormalShapes";
 
 function QuizDetail() {
   const navigate = useNavigate();
@@ -14,9 +14,10 @@ function QuizDetail() {
   }
 
   return (
-    <div className="bg-[#1a0826] min-h-screen text-white px-4 py-5 flex flex-col items-center">
-      <div className="max-w-xl w-full flex flex-col items-center">
-        {/* Consistent image container */}
+    <div className="relative bg-[#1a0826] min-h-screen text-white px-4 py-5 flex flex-col items-center">
+      <NormalShapes />
+      <div className="max-w-xl w-full flex flex-col items-center z-10">
+        {/* Image container */}
         <div className="group w-[90%] max-w-md h-64 sm:h-72 md:h-80 overflow-hidden rounded-xl mb-6">
           <img
             src={quiz.image}
@@ -46,19 +47,19 @@ function QuizDetail() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 w-full">
+        <div className="flex flex-col gap-3 w-full">
           <button
-            className="bg-transparent border-2 border-white text-white font-semibold py-2 rounded-full hover:bg-white hover:text-purple-700 transition"
+            className="bg-transparent border-2 border-white text-white text-xl font-semibold py-2 rounded-full hover:bg-white hover:text-purple-700 transition"
             onClick={() =>
               navigate("/countdown", { state: { quizId: quiz.id } })
             }
           >
             Play
           </button>
-          <button className="bg-pink-500 text-white font-semibold py-2 rounded-full hover:bg-pink-600 transition">
+          <button className="bg-pink-500 text-white text-xl font-semibold py-2 rounded-full hover:bg-pink-600 transition">
             Play With Friends 🧑‍🤝‍🧑
           </button>
-          <button className="bg-[#4a2980] text-white font-semibold py-2 rounded-full hover:bg-[#5e36a1] transition">
+          <button className="bg-[#4a2980] text-white text-xl font-semibold py-2 rounded-full hover:bg-[#5e36a1] transition">
             Flashcards 📇
           </button>
         </div>

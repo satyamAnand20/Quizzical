@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "../components/QuestionCard";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -19,7 +18,8 @@ const ReviewPage = () => {
           onClick={() => navigate(-1)}
           className="mb-4 text-yellow-400 hover:underline flex gap-1"
         >
-          <IoMdArrowRoundBack className="size-6" />Back to Results
+          <IoMdArrowRoundBack className="size-6" />
+          Back to Results
         </button>
         <div className="flex flex-col space-y-20">
           <h1 className="text-3xl font-bold text-yellow-400">

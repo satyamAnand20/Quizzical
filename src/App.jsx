@@ -9,13 +9,11 @@ import QuizPage from "./pages/QuizPage";
 import ResultPage from "./pages/ResultPage";
 import ReviewPage from "./pages/Reviewpage";
 
-
 import LeaderboardPage from "./pages/LeaderboardPage";
 
 function App() {
   const location = useLocation();
 
-  const hideLayoutPaths = ["/countdown", "/play/:id"];
   const hideLayout = !!(
     matchPath("/countdown", location.pathname) ||
     matchPath("/play/:id", location.pathname)

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { quizzes } from "../data/quizzes";
-
 import Hero from "../components/Hero";
 import QuizCard from "../components/QuizCard";
 import QuizCarousel from "../components/QuizCarousel";

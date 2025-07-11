@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const shapeStroke = "#facc15"; // yellow-300
+const shapeStroke = "#facc15";
 
 const FloatingShapes = () => {
   return (

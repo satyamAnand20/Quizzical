@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const QuestionCard = ({
@@ -85,7 +84,7 @@ const QuestionCard = ({
               onClick={(e) => {
                 if (!reviewMode) handleOptionClick(idx, e);
               }}
-              className={`w-full px-6 py-4 rounded-lg text-left flex items-center gap-4 transition-all duration-300 ${getButtonClass(
+              className={`font-semibold w-full px-6 py-4 rounded-lg text-left flex items-center gap-4 transition-all duration-300 ${getButtonClass(
                 idx
               )}`}
             >

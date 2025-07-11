@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { quizzes } from "../data/quizzes";
 import { AnimatePresence, motion } from "framer-motion";
 import QuestionCard from "../components/QuestionCard";
+import NormalShapes from "../components/NormalShapes";
 
 const QuizPage = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const QuizPage = () => {
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [unattemptedCount, setUnattemptedCount] = useState(0);
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]); // ✅ new state
+  const [userAnswers, setUserAnswers] = useState([]);
 
   if (!quiz || questions.length === 0) {
     return (
@@ -54,7 +55,6 @@ const QuizPage = () => {
       ]);
 
       if (isLastQuestion) {
-        // Directly submit quiz without countdown
         navigate("/result", {
           state: {
             correct: correctCount,
@@ -70,7 +70,7 @@ const QuizPage = () => {
           },
         });
       } else {
-        // Show timeout overlay with 3-second countdown
+        // Showing timeout overlay with 3-second countdown
         setShowTimeoutOverlay(true);
         let countdown = 3;
         setCountdownToNext(countdown);
@@ -107,7 +107,7 @@ const QuizPage = () => {
     const correct = index === questions[currentQuestion].correctOptionIndex;
     setIsCorrect(correct);
 
-    // ✅ Record user answer
+    //Record user answer
     setUserAnswers((prev) => [
       ...prev,
       {
@@ -174,8 +174,8 @@ const QuizPage = () => {
           coins: coinCount,
           rank: Math.floor(Math.random() * 500) + 1,
           quizName: quiz.title,
-          quiz, // ✅ added
-          userAnswers, // ✅ added
+          quiz,
+          userAnswers,
           fromQuiz: true,
         },
       });
@@ -198,7 +198,8 @@ const QuizPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-4 relative overflow-hidden">
+    <div className=" min-h-screen bg-slate-900 text-white p-4 relative overflow-hidden">
+      <NormalShapes />
       <style>
         {`
         .animated-coin {
@@ -230,7 +231,22 @@ const QuizPage = () => {
         }
         .animate-shake {
           animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97);
-        }  
+        } 
+          
+        @keyframes fillProgress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+        .next-progress-layer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.2);
+          animation: fillProgress 3s linear forwards;
+          border-radius: 0.5rem; /* same as button */
+        }
+
       `}
       </style>
 
@@ -293,23 +309,6 @@ const QuizPage = () => {
           </div>
         </div>
       )}
-
-      {/* Question */}
-      {/* <AnimatePresence mode="wait">
-        <QuestionCard
-          keyProp={currentQuestion}
-          questionNumber={currentQuestion + 1}
-          totalQuestions={questions.length}
-          questionData={questions[currentQuestion]}
-          quizImage={quiz.image}
-          selectedOption={selectedOption}
-          handleOptionClick={handleOptionClick}
-          getButtonClass={getButtonClass}
-          showNext={showNext}
-          handleNext={handleNext}
-          timer={timer}
-        />
-      </AnimatePresence> */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQuestion}
@@ -340,16 +339,22 @@ const QuizPage = () => {
         </motion.div>
       </AnimatePresence>
 
+      {/* Next Button */}
       {showNext && (
-        <div className="fixed bottom-2 inset-x-0 flex justify-center z-40">
-          <button
-            onClick={handleNext}
-            className="w-full px-6 py-4 mt-6 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
-          >
-            {currentQuestion + 1 === questions.length
-              ? "Submit Quiz"
-              : "Next Question"}
-          </button>
+        <div className="fixed bottom-3 inset-x-0 flex justify-center z-40 px-4">
+          <div className="relative w-full">
+            <button
+              onClick={handleNext}
+              className="w-full px-6 py-4 mt-6 rounded-lg bg-blue-600 hover:bg-blue-700 transition relative overflow-hidden"
+            >
+              <span className="relative z-10 text-2xl font-semibold">
+                {currentQuestion + 1 === questions.length
+                  ? "Submit Quiz"
+                  : "Next Question"}
+              </span>
+              <div className="next-progress-layer"></div>
+            </button>
+          </div>
         </div>
       )}
     </div>

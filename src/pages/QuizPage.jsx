@@ -349,7 +349,7 @@ const QuizPage = () => {
 
       {/* Next Button */}
       {showNext && (
-        <div className="fixed bottom-3 inset-x-0 flex justify-center z-40 px-4">
+        <div className="fixed bottom-2 inset-x-0 flex justify-center z-40 px-4">
           <div className="relative w-full">
             <button
               onClick={handleNext}

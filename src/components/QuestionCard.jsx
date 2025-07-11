@@ -84,9 +84,15 @@ const QuestionCard = ({
               onClick={(e) => {
                 if (!reviewMode) handleOptionClick(idx, e);
               }}
-              className={`font-semibold w-full px-6 py-4 rounded-lg text-left flex items-center gap-4 transition-all duration-300 ${getButtonClass(
-                idx
-              )}`}
+              className={`font-semibold w-full px-6 py-4 rounded-lg text-left flex items-center gap-4 transition-all duration-300
+                ${getButtonClass(idx)} 
+                ${
+                  selectedOption !== null &&
+                  idx === questionData.correctOptionIndex
+                    ? "scale-once"
+                    : ""
+                }
+              `}
             >
               <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-black font-bold">
                 {String.fromCharCode(65 + idx)}

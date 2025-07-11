@@ -246,7 +246,15 @@ const QuizPage = () => {
           animation: fillProgress 3s linear forwards;
           border-radius: 0.5rem; /* same as button */
         }
+        @keyframes scale-once {
+         0% { transform: scale(1); }
+         50% { transform: scale(1.06); }
+         100% { transform: scale(1); }
+        }
 
+        .scale-once {
+          animation: scale-once 0.4s ease-out;
+        }
       `}
       </style>
 

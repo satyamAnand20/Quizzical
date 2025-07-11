@@ -28,7 +28,7 @@ function CountdownPage() {
 
   return (
     <div className="relative min-h-screen bg-[#133239] flex items-center justify-center text-white text-center px-4">
-      <NormalShapes />
+      <NormalShapes className="hidden md:block" />
       <style>
         {`
           @keyframes zoomFadeIn {

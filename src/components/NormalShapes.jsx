@@ -1,6 +1,6 @@
-function NormalShapes() {
+function NormalShapes({ className = "" }) {
   return (
-    <div className="absolute inset-0 pointer-events-none z-0">
+    <div className={`absolute inset-0 pointer-events-none z-0 ${className}`}>
       {/* Squares */}
       <div className="absolute top-10 left-10 w-16 h-16 border border-white/10 rotate-12" />
       <div className="absolute top-40 right-20 w-20 h-20 border border-white/10 rotate-6" />

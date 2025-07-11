@@ -88,13 +88,13 @@ const ResultPage = () => {
         {/* Buttons */}
         <div className="w-full space-y-4 z-10">
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left">
+            <button className="flex-1 bg-[#501578] px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left border border-gray-400">
               <span>Share Score</span>
               <IoShareSocialOutline  className="text-2xl" />
             </button>
             <button
               onClick={handleReviewClick}
-              className="flex-1 bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left"
+              className="flex-1 bg-[#501578] px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left border border-gray-400"
             >
               <span>Review Questions</span>
               <GoArrowRight className="text-2xl" />
@@ -103,7 +103,7 @@ const ResultPage = () => {
 
           <button
             onClick={() => navigate("/leaderboardPage")}
-            className="w-full bg-purple-700 px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left"
+            className="w-full bg-[#501578] px-6 py-5 rounded-lg font-semibold shadow-md hover:bg-purple-800 flex items-center justify-between text-left border border-gray-400"
           >
             <span>Leaderboard</span>
             <BsArrowRightCircle className="text-2xl" />

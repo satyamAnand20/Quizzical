@@ -63,7 +63,7 @@ const ResultPage = () => {
     <div className="relative min-h-screen bg-[#102935] text-white flex flex-col items-center py-8 px-4 sm:px-0">
       <NormalShapes />
       {/* Quiz Heading */}
-      <h1 className="text-3xl font-bold mb-6 text-center">{quizName}</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">{quizName}</h1>
 
       <div className="w-full max-w-4xl flex flex-col items-center space-y-8 z-10">
         {/* Stats Grid */}

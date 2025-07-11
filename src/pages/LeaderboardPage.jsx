@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import NormalShapes from "../components/NormalShapes";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const dummyUsers = Array.from({ length: 25 }, (_, i) => ({
   name: `Player ${i + 1}`,
@@ -35,6 +37,7 @@ const LeaderboardPage = () => {
   }, []);
 
   const [visibleCount, setVisibleCount] = useState(2);
+  const navigate = useNavigate();
 
   const loadMore = () => {
     setVisibleCount((prev) => Math.min(prev + 3, rest.length));
@@ -45,9 +48,22 @@ const LeaderboardPage = () => {
       <NormalShapes />
 
       <div className="relative z-10">
-        <h1 className="text-5xl font-bold text-center mb-15 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">
-          Leaderboard
-        </h1>
+        <div className="max-w-3xl mx-auto w-full px-2 flex items-center justify-between mb-17">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center"
+            aria-label="Go back"
+          >
+            <IoMdArrowRoundBack className="size-7" />
+          </button>
+
+          <h1 className="text-4xl sm:text-5xl font-bold text-center flex-1 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">
+            Leaderboard
+          </h1>
+
+          <div className="w-7" />
+        </div>
 
         {/* Podium */}
         <div className="flex justify-center items-end gap-8 max-[461px]:gap-3 mb-20">

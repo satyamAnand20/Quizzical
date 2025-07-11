@@ -22,7 +22,7 @@ const ReviewPage = () => {
           Back to Results
         </button>
         <div className="flex flex-col space-y-20">
-          <h1 className="text-3xl font-bold text-yellow-400">
+          <h1 className="text-4xl font-bold text-yellow-400">
             Review Question
           </h1>
 

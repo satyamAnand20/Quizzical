@@ -11,7 +11,7 @@ function QuizCard({ id, title, plays, image }) {
             className="w-full h-40 sm:h-44 md:h-48 object-cover rounded transform transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-        <h3 className="mt-3 font-semibold text-base sm:text-lg text-gray-800">
+        <h3 className="mt-3 font-semibold text-base sm:text-lg text-gray-900">
           {title}
         </h3>
         <p className="text-sm text-gray-500 mt-1">{plays} Plays</p>

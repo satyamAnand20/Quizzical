@@ -54,7 +54,7 @@ const QuizCarousel = ({ title, items }) => {
       {/* Scrollable container */}
       <div
         ref={containerRef}
-        className="flex gap-4 overflow-x-auto scroll-smooth px-2 pb-2"
+        className="flex gap-0 overflow-x-auto scroll-smooth px-2 pb-2"
         style={{
           WebkitOverflowScrolling: "touch",
         }}

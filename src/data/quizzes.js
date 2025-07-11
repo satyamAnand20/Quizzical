@@ -1,20 +1,20 @@
-import quiz1 from "../assets/quiz1.jpg";
-import quiz2 from "../assets/quiz2.jpg";
-import quiz3 from "../assets/quiz3.jpg";
-import quiz4 from "../assets/quiz4.jpg";
-import quiz5 from "../assets/quiz5.jpg";
-import quiz6 from "../assets/quiz6.jpg";
-import quiz7 from "../assets/quiz7.jpg";
-import ques1 from "../assets/ques1.jpg";
-import ques2 from "../assets/ques2.jpg";
-import ques3 from "../assets/ques3.jpg";
-import ques4 from "../assets/ques4.jpg";
-import ques5 from "../assets/ques5.jpg";
-import ques6 from "../assets/ques6.jpg";
-import ques7 from "../assets/ques7.jpg";
-import ques8 from "../assets/ques8.jpg";
-import ques9 from "../assets/ques9.jpg";
-import ques10 from "../assets/ques10.jpg";
+import quiz1 from "../assets/quiz1.webp";
+import quiz2 from "../assets/quiz2.webp";
+import quiz3 from "../assets/quiz3.webp";
+import quiz4 from "../assets/quiz4.webp";
+import quiz5 from "../assets/quiz5.webp";
+import quiz6 from "../assets/quiz6.webp";
+import quiz7 from "../assets/quiz7.webp";
+import ques1 from "../assets/ques1.webp";
+import ques2 from "../assets/ques2.webp";
+import ques3 from "../assets/ques3.webp";
+import ques4 from "../assets/ques4.webp";
+import ques5 from "../assets/ques5.webp";
+import ques6 from "../assets/ques6.webp";
+import ques7 from "../assets/ques7.webp";
+import ques8 from "../assets/ques8.webp";
+import ques9 from "../assets/ques9.webp";
+import ques10 from "../assets/ques10.webp";
 
 
 export const quizzes = [

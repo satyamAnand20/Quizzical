@@ -26,27 +26,27 @@ const ResultPage = () => {
   const accuracy = Math.round((correct / totalQuestions) * 100);
   const avgTimePerQ = Math.round(timeSpent / totalQuestions);
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://run.confettipage.com/here.js";
-    script.setAttribute(
-      "data-confetticode",
-      "U2FsdGVkX1+zLfTpbHueUqYJrbpyMu8ijfwTkufA5vGocYTw+ezV8tuXPRZV/dzA3UCzdX3v7NcNTiOI6D5Lp5zf08GpvGNCHWN3py2ud6SbzZMLPPsU4BpS5YbcRYTwwR/uf54y9+K+Kz70GHaau/L3cjR34p+5fiU7DjhF5OXy9oVbZVGhtX/oUz6kBrJqqFV5LMoVJePD5/nAiUhp1z0CYR/rZBQlhvKwy1lgmD0jaO6fbtjnDykjkWsTANfbQUSaJ/9AEdGrBKBawBcuQhtldQshMlZTZw7/+d0QkNdCnvyIP5zNAYTNz1Ft25NoKI9hk4SdigMe2t/XmXR8kHNWA+GZDVwUdanoGpAntsr/rl2bRsoO6ZCo/b6o9nGh2vqWftr1pqqojRb0Gwsyy9xGbU0vKsUaaQ/FySvvz7D5atm5WWgeMSnpQCIjXHbD3PlZjwsBMGTUhachFLdCwV4b3/vIB9afiMnr0074TRaKoDmHxJtZeiTisBZa/IsC8wpMjuX4SQ/ZosiWMu2uz/RsSgT35QtABnF3eG6gFQio1bwyGEHR0BZPH3EboXqRNEZl6bi/VrT6E6qAd7cQG5G4svy+e9/zMhS4YusOkEfqn2fHPZRlb8AkEfk7H1Lo/IMk2X2e+1YgHgEp7eZ6k8RxK0oqPBGdMfSXyfekQu+JheOQ9iPOyVvw9knqDdLbcdVGGk0MKjGADoNzvQyE2uhx0PueD88Sixnpz8sW/ayfi7Uzqhxi2qp4oYjK4mG3uVHkaJlDSGAE3Rso35jzurli6pTxeZYegAGPOAzYmm4="
-    );
-    script.async = true;
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "https://run.confettipage.com/here.js";
+  //   script.setAttribute(
+  //     "data-confetticode",
+  //     "U2FsdGVkX1+zLfTpbHueUqYJrbpyMu8ijfwTkufA5vGocYTw+ezV8tuXPRZV/dzA3UCzdX3v7NcNTiOI6D5Lp5zf08GpvGNCHWN3py2ud6SbzZMLPPsU4BpS5YbcRYTwwR/uf54y9+K+Kz70GHaau/L3cjR34p+5fiU7DjhF5OXy9oVbZVGhtX/oUz6kBrJqqFV5LMoVJePD5/nAiUhp1z0CYR/rZBQlhvKwy1lgmD0jaO6fbtjnDykjkWsTANfbQUSaJ/9AEdGrBKBawBcuQhtldQshMlZTZw7/+d0QkNdCnvyIP5zNAYTNz1Ft25NoKI9hk4SdigMe2t/XmXR8kHNWA+GZDVwUdanoGpAntsr/rl2bRsoO6ZCo/b6o9nGh2vqWftr1pqqojRb0Gwsyy9xGbU0vKsUaaQ/FySvvz7D5atm5WWgeMSnpQCIjXHbD3PlZjwsBMGTUhachFLdCwV4b3/vIB9afiMnr0074TRaKoDmHxJtZeiTisBZa/IsC8wpMjuX4SQ/ZosiWMu2uz/RsSgT35QtABnF3eG6gFQio1bwyGEHR0BZPH3EboXqRNEZl6bi/VrT6E6qAd7cQG5G4svy+e9/zMhS4YusOkEfqn2fHPZRlb8AkEfk7H1Lo/IMk2X2e+1YgHgEp7eZ6k8RxK0oqPBGdMfSXyfekQu+JheOQ9iPOyVvw9knqDdLbcdVGGk0MKjGADoNzvQyE2uhx0PueD88Sixnpz8sW/ayfi7Uzqhxi2qp4oYjK4mG3uVHkaJlDSGAE3Rso35jzurli6pTxeZYegAGPOAzYmm4="
+  //   );
+  //   script.async = true;
 
-    script.onload = () => {
-      if (window.runConfetti) {
-        window.runConfetti();
-      }
-    };
+  //   script.onload = () => {
+  //     if (window.runConfetti) {
+  //       window.runConfetti();
+  //     }
+  //   };
 
-    document.body.appendChild(script);
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const handleReviewClick = () => {
     if (!quiz || !userAnswers) {

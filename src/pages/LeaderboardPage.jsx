@@ -14,27 +14,27 @@ const LeaderboardPage = () => {
   const topThree = dummyUsers.slice(0, 3);
   const rest = dummyUsers.slice(3);
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://run.confettipage.com/here.js";
-    script.setAttribute(
-      "data-confetticode",
-      "U2FsdGVkX18a4URI0L7z3yvhIAaKFhChgXbMBjoL1FVQWsQIQVBJ/9A1l8EVXQoXSJI+J07VDBIW6Z9Ql1Sfal9WDdAYvbUEoGUjVPpAasxfcRTew7s/h657DP7F63hidNz9gEf7UpNbIeHR0GLh3zOyx2F0MQh39AN5JG3B5c9GsQKC22Ez1/EcoxrcY5MvLZsRK41n7HqP1aLgP1AiAStjHQONmd0MyjNECXjCR6Gw3B/2bo9zF2rxF4K1xu0jnXfvDM0FWn6vmwYj4b7CWcT3YofRxtaHnc+KSOnirnbVewNToPq1llYRe1WQ3RniVKswE6IOj6N8F6gBRxjy6gigueVWKZNewU0oL1goNVC9zXQp52uIsYpD5QPD/GbfCQCFL8DQI9GSJQM3jqsF+aSAZ5d/i+BE9XKQhbXntaN8L6XgDWgYMUunQJQm/huntpBF5KQ8S7GkhP/RRUcC99usZfsZINu7rewIKvG2clgVxxBWZHxVME60cukHZfyuhuzrNFD24On2YQaRmh0FWDjlDnTLCuvdKUZvYVc5w1bSvX2NI/tBfB4ocbS8oFVaI2CspMORnHoIrBSmUcY03MHd0xALni3oJ68CoZP2W22+8vYJzezr4vBbIJSVo4OO8VgrF0g5AdxHS4tq6nPaWqXExSlrQ8q+AgWEwjBr1cRCRqAsUnjHKoMY82qzdBqgI2mznZTnf8d+VIGjYcMoVmEuvvDZ1Jt9H1v3dkWBbMCXTimfwohi/C7Aem0SlHV6118qtMlTi6/oeYPBBOpsEKIKlD0nkaOQKoSmRjKmI3Y="
-    );
-    script.async = true;
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "https://run.confettipage.com/here.js";
+  //   script.setAttribute(
+  //     "data-confetticode",
+  //     "U2FsdGVkX18a4URI0L7z3yvhIAaKFhChgXbMBjoL1FVQWsQIQVBJ/9A1l8EVXQoXSJI+J07VDBIW6Z9Ql1Sfal9WDdAYvbUEoGUjVPpAasxfcRTew7s/h657DP7F63hidNz9gEf7UpNbIeHR0GLh3zOyx2F0MQh39AN5JG3B5c9GsQKC22Ez1/EcoxrcY5MvLZsRK41n7HqP1aLgP1AiAStjHQONmd0MyjNECXjCR6Gw3B/2bo9zF2rxF4K1xu0jnXfvDM0FWn6vmwYj4b7CWcT3YofRxtaHnc+KSOnirnbVewNToPq1llYRe1WQ3RniVKswE6IOj6N8F6gBRxjy6gigueVWKZNewU0oL1goNVC9zXQp52uIsYpD5QPD/GbfCQCFL8DQI9GSJQM3jqsF+aSAZ5d/i+BE9XKQhbXntaN8L6XgDWgYMUunQJQm/huntpBF5KQ8S7GkhP/RRUcC99usZfsZINu7rewIKvG2clgVxxBWZHxVME60cukHZfyuhuzrNFD24On2YQaRmh0FWDjlDnTLCuvdKUZvYVc5w1bSvX2NI/tBfB4ocbS8oFVaI2CspMORnHoIrBSmUcY03MHd0xALni3oJ68CoZP2W22+8vYJzezr4vBbIJSVo4OO8VgrF0g5AdxHS4tq6nPaWqXExSlrQ8q+AgWEwjBr1cRCRqAsUnjHKoMY82qzdBqgI2mznZTnf8d+VIGjYcMoVmEuvvDZ1Jt9H1v3dkWBbMCXTimfwohi/C7Aem0SlHV6118qtMlTi6/oeYPBBOpsEKIKlD0nkaOQKoSmRjKmI3Y="
+  //   );
+  //   script.async = true;
 
-    script.onload = () => {
-      if (window.runConfetti) {
-        window.runConfetti();
-      }
-    };
+  //   script.onload = () => {
+  //     if (window.runConfetti) {
+  //       window.runConfetti();
+  //     }
+  //   };
 
-    document.body.appendChild(script);
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const [visibleCount, setVisibleCount] = useState(2);
   const navigate = useNavigate();
